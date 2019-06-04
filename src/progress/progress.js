@@ -67,7 +67,3 @@
        }
    })
    
-p = Progress(value=50);
-p.parentNode = document.getElementsByClassName('example');
-p.setValue(50);
-p.setMod('animated', 'yes');

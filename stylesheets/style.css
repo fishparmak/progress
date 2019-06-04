@@ -1,3 +1,5 @@
-@import url("../src/reset.css");
-@import url("../src/progress/progress.css");
-@import url("utilities.css");
+@import url("../src/all.css");
+
+.main {
+    height: 600px;
+}
