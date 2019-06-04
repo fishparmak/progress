@@ -3,36 +3,36 @@
    
     global.Progress = factory;
    })(this, function () {
-       return new Progress(parentNode = [], state = 'normal', prm = '', value = '25');
-       function Progress(parentNode= [], state = 'normal', prm = '', value) {
+       return new Progress(parentNode = [], state = 'normal', prm = '');
+       function Progress(parentNode= [], state = 'normal', prm = '') {
            this.state = state;
            this.prm = prm;
-           this.value = value;
+           this.value;
            this.parentNode = parentNode;
            var progressRunner;
            var rad = 9;
-           var circumference;
-           var strokeLength ;
+        //    var circumference;
+        //    var strokeLength ;
 
-        //    var progressRunner = document.getElementsByClassName('progress__runner')[0];
            var calculateStroke = function (rad) {
                circumference = 2*Math.PI*rad;
-               strokeLength = (this.value*2*Math.PI*rad)/100;
-            //    strokeLength = 10;
+               strokeLength = (this.value*circumference)/100;
                console.log(this.value);
            }
            this.drawChart = function (radius=9) {
                rad = radius;
-               calculateStroke(rad);
-               console.log(this.parentNode[0]);
+               var circumference = 2*Math.PI*rad;
+               var strokeLength = (this.value*circumference)/100;
+            //    calculateStroke(rad);
+            //    console.log(this.parentNode[0]);
                this.parentNode[0].innerHTML = '<svg class="progress" viewbox="0 0 20 20" width="200" height="200">' +
                '<circle class="progress__field" stroke="gray" stroke-width="1" fill="none" cx="10" cy="10" r='+rad+' />' +
                '<circle class="progress__runner" stroke="blue" stroke-width="1" stroke-dasharray="' + strokeLength +',' + circumference + '" stroke-linecap="round" fill="none" cx="10" cy="10" r='+rad+' /></svg>';
-               for(child in this.parentNode[0].childNodes){
-                   if(child.className=='progress'){
-                       progressRunner = child.childNodes[1];
-                   }
-               }
+               child = this.parentNode[0].childNodes[0];
+                if(child.className.baseVal=='progress'){
+                    progressRunner = child.childNodes[1];
+                }
+                animate();
                return this;
            }
            this.setMod = function (state, prm= '') {
@@ -42,6 +42,8 @@
                   case 'animated':
                       if(prm=='yes'){
                           this.state = state;
+                          hideAnimation();
+                          animate();
                         }
                         break;
                   case 'normal':
@@ -59,21 +61,25 @@
                }
                if(value>=0 && value<=100) {
                     this.value = value;
-                    root.style.setProperty('--rot-deg', (360*value/100)+"deg");
-                    root.style.setProperty('--fill-mode', "backwards");
-                    root.style.setProperty('--clip-val', this.value+"px");
-                    hideAnimation();
-                    animate();
+                    this.drawChart();
+                    // animate();
+                    // hideAnimation();
+                    // animate();
                }
                 return this;
            }
            var animate = function() {
-               progressRunner.style.strokeDasharray = 70;
                progressRunner.classList.add('progress__runner_animated');
+               
            }
            var hideAnimation = function () {
+            progressRunner.style.strokeDasharray = strokeLength +',' + circumference;
                progressRunner.classList.remove('progress__runner_animated');
            }
        }
    })
    
+p = Progress(value=50);
+p.parentNode = document.getElementsByClassName('example');
+// p.drawChart();
+p.setValue(50);
