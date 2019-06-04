@@ -3,26 +3,44 @@
    
     global.Progress = factory;
    })(this, function () {
-       return new Progress(state = 'normal', prm = '');
-       function Progress(state, prm) {
-           var progress = document.getElementsByClassName('progress')[0];
-           var progressBars = document.getElementsByClassName('progress__bar');
-           var root = document.documentElement;
+       return new Progress(parentNode = [], state = 'normal', prm = '', value = '25');
+       function Progress(parentNode= [], state = 'normal', prm = '', value) {
            this.state = state;
            this.prm = prm;
-           this.value = 100;
-           this.value = 0;
-   
+           this.value = value;
+           this.parentNode = parentNode;
+           var progressRunner;
+           var rad = 9;
+           var circumference;
+           var strokeLength ;
+
+        //    var progressRunner = document.getElementsByClassName('progress__runner')[0];
+           var calculateStroke = function (rad) {
+               circumference = 2*Math.PI*rad;
+               strokeLength = (this.value*2*Math.PI*rad)/100;
+            //    strokeLength = 10;
+               console.log(this.value);
+           }
+           this.drawChart = function (radius=9) {
+               rad = radius;
+               calculateStroke(rad);
+               console.log(this.parentNode[0]);
+               this.parentNode[0].innerHTML = '<svg class="progress" viewbox="0 0 20 20" width="200" height="200">' +
+               '<circle class="progress__field" stroke="gray" stroke-width="1" fill="none" cx="10" cy="10" r='+rad+' />' +
+               '<circle class="progress__runner" stroke="blue" stroke-width="1" stroke-dasharray="' + strokeLength +',' + circumference + '" stroke-linecap="round" fill="none" cx="10" cy="10" r='+rad+' /></svg>';
+               for(child in this.parentNode[0].childNodes){
+                   if(child.className=='progress'){
+                       progressRunner = child.childNodes[1];
+                   }
+               }
+               return this;
+           }
            this.setMod = function (state, prm= '') {
                state = state.toLowerCase();
                prm = prm.toLocaleLowerCase();
               switch(state){
                   case 'animated':
                       if(prm=='yes'){
-                          animate();
-                        //   progress.classList.add('progress_animated');
-                        //   progressBars[0].classList.add('progress__bar_primary');
-                        //   progressBars[1].classList.add('progress__bar_secondary');
                           this.state = state;
                         }
                         break;
@@ -50,14 +68,11 @@
                 return this;
            }
            var animate = function() {
-               progress.classList.add('progress_animated');
-            //    progressBars[0].classList.add('progress__bar_primary');
-               progressBars[0].classList.add('progress__bar_secondary');
+               progressRunner.style.strokeDasharray = 70;
+               progressRunner.classList.add('progress__runner_animated');
            }
            var hideAnimation = function () {
-               progress.classList.remove("progress_animated");
-            //    progressBars[0].classList.remove('progress__bar_primary');
-               progressBars[0].classList.remove('progress__bar_secondary');
+               progressRunner.classList.remove('progress__runner_animated');
            }
        }
    })
