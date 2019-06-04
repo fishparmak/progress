@@ -1,9 +1,3 @@
-@import url("reset.css");
-
-:root {
-    --stroke:14 56;
-  }
-
    .progress__runner {
     transform: rotate(-90deg);
     transform-origin: center;
