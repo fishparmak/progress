@@ -10,6 +10,9 @@
     align-items: center;
 }
 
+.m-l-10 {
+    margin-left: 100px;
+}
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
 }

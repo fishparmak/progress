@@ -3,3 +3,8 @@
 .main {
     height: 600px;
 }
+
+.control_main {
+    height: 400px;
+    width: 400px;
+}
