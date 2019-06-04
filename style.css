@@ -1,4 +1,10 @@
 @import url("reset.css");
+
+:root {
+    --main-bg-color: coral;
+    --rot-deg: 360deg; 
+  }
+
 .progress {
     position: absolute;
     width:100px;
@@ -24,25 +30,30 @@
 }
 
 .progress__bar_primary {
+    transform: rotate(360deg);
+    animation-fill-mode: backwards;
     animation-duration: 6s;
     animation-name: rotate;
 }
 
 .progress__bar_secondary {
+    animation-fill-mode: backwards;
+    transform: rotate(180deg);
     animation-duration: 3s;
     animation-fill-mode: forwards;
     animation-name: rotate_secondary;
 }
 
 @keyframes rotate {
-    to {
-        transform: rotate(360deg);
+    from {
+        transform: rotate(0);
     }
+    
 }
 
 @keyframes rotate_secondary {
-    to {
-        transform: rotate(180deg);
+    from {
+        transform: rotate(0);
     }
 }
 
