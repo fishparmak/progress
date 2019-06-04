@@ -3,49 +3,37 @@
    
     global.Progress = factory;
    })(this, function () {
-    
-   
-       return new Progress(state = 'animated', prm = 'yes');
+       return new Progress(state = 'normal', prm = '');
    
        function Progress(state, prm) {
+           var progress = document.getElementsByClassName('progress')[0];
+           var progressBars = document.getElementsByClassName('progress__bar');
            this.state = state;
            this.prm = prm;
+           this.value = 100;
            this.value = 0;
    
            this.setMod = function (state, prm= '') {
-              
-               return this;
-           };
-   
-           this.generateAll();
-   
-           this.printAll = function() {
-               for(var i = 0; i < horoscope.length; i++) {
-                   console.log('\nplace: ' + (i+1) + ', sign: ' + horoscope[i].sign + '\nprediction: ' + horoscope[i].prediction + '_____');
-               }
-               return this;
-           }
-           this.changeSign = function() {
-               this.sign = prompt("Enter your sign");
-               return this;
-           }
-           this.showMyHoroscope = function() {
-               for(var i = 0; i < horoscope.length; i++) {
-                   if( horoscope[i].sign == this.sign){
-                       console.log('\nplace: ' + (i+1) + ', sign: ' + horoscope[i].sign + '\nprediction: ' + horoscope[i].prediction + '_____');
-                       break;
-                   }
-               }
+               state = state.toLowerCase();
+               prm = prm.toLocaleLowerCase();
+              switch(state){
+                  case 'animated': 
+                    if(prm=='yes'){
+                        progress.classList.add('progress_animated');
+                        progressBars[0].classList.add('progress__bar_primary');
+                        progressBars[1].classList.add('progress__bar_secondary');
+                        this.state = state;
+                    }
+                    break;
+                  default: console.log('Error');
+              }
                return this;
            }
-           this.showFriendHoroscope = function(friendSign) {
-               for(var i = 0; i < horoscope.length; i++) {
-                   if( horoscope[i].sign.toLowerCase() == friendSign.toLowerCase()){
-                       console.log('\nplace: ' + (i+1) + ', sign: ' + horoscope[i].sign + '\nprediction: ' + horoscope[i].prediction + '_____');
-                       break;
-                   }
+           this.setValue = function (value) {
+               if(value>=0 && value<=100) {
+                    this.value = value;
                }
-               return this;
+                this.value = value;
            }
        }
    })
