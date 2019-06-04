@@ -1,0 +1,53 @@
+@import url("reset.css");
+.progress {
+    position: absolute;
+    width:100px;
+    height: 100px;
+    background-color: azure;
+    clip:  rect(0px, 100px, 100px, 50px);  
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+.progress_animated {
+    animation-delay: 2s;
+    animation-duration: 0.01s;
+    animation-name: clip-remove;
+}
+
+.progress__bar {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 10px solid blue;
+    border-radius: 50%;
+    clip: rect(0px, 50px, 100px, 0px);
+}
+
+.progress__bar_primary {
+    animation-duration: 6s;
+    animation-name: rotate;
+}
+
+.progress__bar_secondary {
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-name: rotate_secondary;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate_secondary {
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes clip-remove {
+    to {
+      clip: rect(auto, auto, auto, auto);
+    }
+  }
