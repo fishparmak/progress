@@ -41,7 +41,9 @@
                }
                if(value>=0 && value<=100) {
                     this.value = value;
-                    root.style.setProperty('--rot-deg', (360*value/100)+"px");
+                    root.style.setProperty('--rot-deg', (360*value/100)+"deg");
+                    root.style.setProperty('--fill-mode', "backwards");
+                    root.style.setProperty('--clip-val', this.value+"px");
                     hideAnimation();
                     animate();
                }
@@ -49,13 +51,13 @@
            }
            var animate = function() {
                progress.classList.add('progress_animated');
-               progressBars[0].classList.add('progress__bar_primary');
-               progressBars[1].classList.add('progress__bar_secondary');
+            //    progressBars[0].classList.add('progress__bar_primary');
+               progressBars[0].classList.add('progress__bar_secondary');
            }
            var hideAnimation = function () {
                progress.classList.remove("progress_animated");
-               progressBars[0].classList.remove('progress__bar_primary');
-               progressBars[1].classList.remove('progress__bar_secondary');
+            //    progressBars[0].classList.remove('progress__bar_primary');
+               progressBars[0].classList.remove('progress__bar_secondary');
            }
        }
    })

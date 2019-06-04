@@ -2,7 +2,9 @@
 
 :root {
     --main-bg-color: coral;
-    --rot-deg: 360deg; 
+    --rot-deg: 360deg;
+    --fill-mode: forwards;
+    --clip-val: 50px;
   }
 
 .progress {
@@ -11,7 +13,7 @@
     height: 100px;
     background-color: azure;
     clip:  rect(0px, 100px, 100px, 50px);  
-    animation-fill-mode: forwards;
+    animation-fill-mode: backwards;
     animation-timing-function: linear;
 }
 .progress_animated {
@@ -30,15 +32,15 @@
 }
 
 .progress__bar_primary {
-    transform: rotate(360deg);
-    animation-fill-mode: backwards;
+    transform: rotate(calc(var(--rot-deg)/2));
+    animation-fill-mode: forwards;
     animation-duration: 6s;
     animation-name: rotate;
 }
 
 .progress__bar_secondary {
     animation-fill-mode: backwards;
-    transform: rotate(180deg);
+    transform: rotate(calc(var(--rot-deg)));
     animation-duration: 3s;
     animation-fill-mode: forwards;
     animation-name: rotate_secondary;
