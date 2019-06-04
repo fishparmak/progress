@@ -10,25 +10,14 @@
            this.value;
            this.parentNode = parentNode;
            var progressRunner;
-           var rad = 9;
-        //    var circumference;
-        //    var strokeLength ;
 
-           var calculateStroke = function (rad) {
-               circumference = 2*Math.PI*rad;
-               strokeLength = (this.value*circumference)/100;
-               console.log(this.value);
-           }
-           this.drawChart = function (radius=9) {
-               rad = radius;
+           this.drawChart = function (rad=9) {
                var circumference = 2*Math.PI*rad;
                var strokeLength = (this.value*circumference)/100;
-            //    calculateStroke(rad);
-            //    console.log(this.parentNode[0]);
                this.parentNode[0].innerHTML = '<svg class="progress" viewbox="0 0 20 20" width="200" height="200">' +
                '<circle class="progress__field" stroke="gray" stroke-width="1" fill="none" cx="10" cy="10" r='+rad+' />' +
                '<circle class="progress__runner" stroke="blue" stroke-width="1" stroke-dasharray="' + strokeLength +',' + circumference + '" stroke-linecap="round" fill="none" cx="10" cy="10" r='+rad+' /></svg>';
-               child = this.parentNode[0].childNodes[0];
+               var child = this.parentNode[0].childNodes[0];
                 if(child.className.baseVal=='progress'){
                     progressRunner = child.childNodes[1];
                 }
@@ -42,13 +31,16 @@
                   case 'animated':
                       if(prm=='yes'){
                           this.state = state;
-                          hideAnimation();
-                          animate();
+                          this.drawChart();
                         }
                         break;
                   case 'normal':
+                      progressRunner.style.display = 'true';
                       this.state = state;
                       break;
+                  case 'hidden':
+                      progressRunner.style.display = 'none';
+                      this.state = state;
                 
                   default: console.log('Error');
               }
@@ -62,9 +54,6 @@
                if(value>=0 && value<=100) {
                     this.value = value;
                     this.drawChart();
-                    // animate();
-                    // hideAnimation();
-                    // animate();
                }
                 return this;
            }
@@ -73,7 +62,6 @@
                
            }
            var hideAnimation = function () {
-            progressRunner.style.strokeDasharray = strokeLength +',' + circumference;
                progressRunner.classList.remove('progress__runner_animated');
            }
        }
@@ -81,5 +69,5 @@
    
 p = Progress(value=50);
 p.parentNode = document.getElementsByClassName('example');
-// p.drawChart();
 p.setValue(50);
+p.setMod('animated', 'yes');
