@@ -43,6 +43,12 @@
 @media (min-width: 992px) {
 	.container {
         width: 970px !important;
+        text-align: center !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+      }
+      .m-l-72-lg {
+          margin-right: 72px !important;
       }
 }
 
@@ -50,5 +56,10 @@
 @media (min-width: 1200px) {
     .container {
         width: 1170px !important;
+        flex-direction: row !important;
+        justify-content: center !important;
       }
+      .m-l-72-lx {
+        margin-right: 72px !important;
+    }
 }

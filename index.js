@@ -37,7 +37,7 @@ control.addEventListener('change', function(e) {
 
         }
         else {
-            console.log('EventListener Error');
+            throw('EventListener Error');
         }
         }
     

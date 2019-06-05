@@ -1,7 +1,7 @@
 @import url("../src/all.css");
 @import url("utilities.css");
 .main {
-    display: block;
+    /* display: block; */
     height: 600px;
     text-align: center;
     padding-top: 60px;
