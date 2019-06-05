@@ -26,6 +26,7 @@
            }
            this.setMod = function (state, prm) {
                state = state.toLowerCase();
+               console.log(prm);
                prm = prm.toLocaleLowerCase();
                this.prm = prm;
                console.log(prm);

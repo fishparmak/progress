@@ -23,7 +23,7 @@ cont.addEventListener('change', function(e) {
         e.stopPropagation();
     } else {
         if(target.id == 'animated') {
-            if(target.checked=='true') {
+            if(target.checked==true) {
                 p.setMod('animated', 'yes');
             }
             else {
@@ -31,7 +31,7 @@ cont.addEventListener('change', function(e) {
             }
         }
         else if(target.id == 'hidden') {
-            if(target.checked=='true') {
+            if(target.checked==true) {
                 p.setMod('hidden', 'yes');
             }
             else {
