@@ -33,10 +33,8 @@ control.addEventListener('change', function(e) { // в случае измене
         else if(target.id == 'valueInput') {
             hidden.checked = false;
             animated.checked = false;
-            p.setMod('animated', '');
-            p.setValue(target.value);
-            
-
+            p.setMod('animated', ''); // переключаем в 'Normal state' в случае изменения значения
+            p.setValue(target.value); // ставим значение
         }
         else {
             throw('EventListener Error');
