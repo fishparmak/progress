@@ -1,5 +1,5 @@
-p = Progress(value=10);
-p.parentNode = document.getElementsByClassName('main__progress');
+p = Progress(value=10); //c
+p.setNode(document.getElementsByClassName('main__progress'));
 p.setValue(50);
 
 var valueInput = document.getElementById("valueInput");
@@ -39,5 +39,4 @@ control.addEventListener('change', function(e) {
             throw('EventListener Error');
         }
         }
-    
 });

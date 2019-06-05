@@ -68,6 +68,10 @@
                }
                 return this;
            }
+           this.setNode = function (node) {
+               this.parentNode = node;
+               return this;
+           }
            var animate = function() {
                progressRunner.classList.add('progress__runner_animated'); // добавляем класс в html для создания анимации
                
