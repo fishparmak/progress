@@ -6,7 +6,7 @@
        return new Progress(parentNode = [], state = 'normal', prm = '');
        function Progress(parentNode= [], state = 'normal', prm = '') {
            this.state = state;
-           this.prm = prm;
+           this.prm;
            this.value;
            this.parentNode = parentNode;
            var progressRunner;
@@ -24,28 +24,32 @@
                 animate();
                return this;
            }
-           this.setMod = function (state, prm= '') {
+           this.setMod = function (state, prm) {
                state = state.toLowerCase();
                prm = prm.toLocaleLowerCase();
                this.prm = prm;
+               console.log(prm);
               switch(state){
                   case 'animated':
-                      progressRunner.style.display = 'true';
+                      progressRunner.style.display = 'block';
                       if(this.prm=='yes'){
                           this.state = state;
                           this.drawChart();
                         }
                         else {
-                            
+                            progressRunner.style.display = 'block';
+                            this.state='normal'
                         }
                         break;
-                  case 'normal':
-                      progressRunner.style.display = 'true';
-                      this.state = state;
-                      break;
                   case 'hidden':
-                      progressRunner.style.display = 'none';
-                      this.state = state;
+                      if(this.prm=='yes') {
+                        console.log('hide');
+                        progressRunner.style.display = 'none';
+                        this.state = state;
+                      }
+                      else {
+                        progressRunner.style.display = 'block';
+                      }
                       break;
                   default: console.log('Error');
               }

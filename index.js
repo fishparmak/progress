@@ -29,7 +29,14 @@ cont.addEventListener('change', function(e) {
             else {
                 p.setMod('animated', '');
             }
-            // console.log(target.checked);
+        }
+        else if(target.id == 'hidden') {
+            if(target.checked=='true') {
+                p.setMod('hidden', 'yes');
+            }
+            else {
+                p.setMod('hidden', '');
+            }
         }
         else if(target.id == 'valueInput') {
             p.setValue(target.value);
