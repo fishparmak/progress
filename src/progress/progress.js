@@ -30,16 +30,21 @@
                this.prm = prm;
               switch(state){
                   case 'animated':
+                      progressRunner.style.display = 'true';
                       if(this.prm=='yes'){
                           this.state = state;
                           this.drawChart();
                         }
                         else {
-                            progressRunner.style.display = 'none';
+                            
                         }
                         break;
                   case 'normal':
                       progressRunner.style.display = 'true';
+                      this.state = state;
+                      break;
+                  case 'hidden':
+                      progressRunner.style.display = 'none';
                       this.state = state;
                       break;
                   default: console.log('Error');
@@ -47,8 +52,8 @@
                return this;
            }
            this.setValue = function (value) {
-               if(this.state == 'animated') {
-                   console.log('State is animated. Value can be changed only in the Normal state.')
+               if(this.state != 'normal') {
+                   console.log('Value can be changed only in the Normal state.')
                    return this;
                }
                if(value>=0 && value<=100) {
