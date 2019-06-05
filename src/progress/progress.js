@@ -16,8 +16,8 @@
                var circumference = 2*Math.PI*rad;
                var strokeLength = (this.value*circumference)/100;
                this.parentNode[0].innerHTML = '<svg class="progress" viewbox="0 0 20 20" width="200" height="200">' +
-               '<circle class="progress__field" stroke="gray" stroke-width="1" fill="none" cx="10" cy="10" r='+rad+' />' +
-               '<circle class="progress__runner" stroke="blue" stroke-width="1" stroke-dasharray="' + strokeLength +',' + circumference + '" stroke-linecap="round" fill="none" cx="10" cy="10" r='+rad+' /></svg>';
+               '<circle class="progress__field" stroke="#bfbfbf" stroke-width="1" fill="none" cx="10" cy="10" r='+rad+' />' +
+               '<circle class="progress__runner" stroke="#fce112" stroke-width="1" stroke-dasharray="' + strokeLength +',' + circumference + '" stroke-linecap="round" fill="none" cx="10" cy="10" r='+rad+' /></svg>';
                var child = this.parentNode[0].childNodes[0];
                 if(child.className.baseVal=='progress'){
                     progressRunner = child.childNodes[1];

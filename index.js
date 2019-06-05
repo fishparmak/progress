@@ -6,7 +6,6 @@ var valueInput = document.getElementById("valueInput");
 var hidden = document.getElementById("hidden");
 var animated = document.getElementById("animated");
 var control = document.getElementsByClassName("control")[0];
-animated.checked = true;
 
 control.addEventListener('change', function(e) {
     const { target } = e;
@@ -20,6 +19,7 @@ control.addEventListener('change', function(e) {
             }
             else {
                 p.setMod('animated', '');
+                p.setValue(valueInput.value);
             }
         }
         else if(target.id == 'hidden') {
@@ -32,7 +32,6 @@ control.addEventListener('change', function(e) {
             }
         }
         else if(target.id == 'valueInput') {
-            animated.checked = false;
             p.setValue(target.value);
 
         }
