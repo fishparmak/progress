@@ -23,7 +23,6 @@
                     progressRunner = child.childNodes[1];
                     progressBlock = child;
                 }
-                animate(); // добавляем класс в html код для создания анимации
                return this; // возвращаем эту же сущность (Progress) для возможности использования цепи(ex: p.drawChart().setMod('animated))
            }
            this.setMod = function (state, prm) { // метод для установки состояния
@@ -35,9 +34,13 @@
                       if(prm=='yes'){
                           this.state = state;
                           this.drawChart(); //рендерим анимацию
+                          addAnimation(); // добавляем класс в html код для создания анимации
                         }
                         else {
+                            // console.log('here');
                             progressBlock.style.display = 'inline-block';
+                            hideAnimation();
+                            this.drawChart();
                             this.state='normal' // переводим диаграмму в 'нормальное' состояние, в котором можно регулировать значение
                         }
                         break;
@@ -73,10 +76,12 @@
                this.parentNode = node;
                return this;
            }
-           var animate = function() {
-               progressRunner.classList.add('progress__runner_animated'); // добавляем класс в html для создания анимации
-               
+           var addAnimation = function() {
+               progressRunner.classList.add('progress__runner_animated'); // добавляем класс в html для создания анимации  
            }
+           var hideAnimation = function() {
+            progressRunner.classList.remove('progress__runner_animated'); // добавляем класс в html для создания анимации  
+        }
        }
    })
    
