@@ -1,3 +1,5 @@
 @import url("reset.css");
+@import url("main.css");
 @import url("progress/progress.css");
+@import url("switch.css");
 @import url("control.css");

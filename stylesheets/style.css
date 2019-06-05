@@ -1,10 +1,15 @@
 @import url("../src/all.css");
-
+@import url("utilities.css");
 .main {
+    display: block;
     height: 600px;
+    text-align: center;
+    padding-top: 60px;
 }
 
 .control_main {
-    height: 400px;
-    width: 400px;
+    /* position: absolute; */
+    /* display: block; */
+    /* height: 200px; */
+    /* width: 200px; */
 }

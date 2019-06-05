@@ -2,18 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheets/style.css">
     <title>Progress</title>
 </head>
 <body>
-    <section class="main d-flex j-content-center a-items-center">
-        <div class="main__progress">jdsk.</div>
-        <div class="control m-l-10 control_main">
-            <input type="text" class="control__input control__input_value"></div>
-            <input type="checkbox" class="control__input control__input_switch"></div>
-            <input type="checkbox" class="control__input control__input_switch"></div>
+    <section class="main container d-flex f-direction-column a-items-center">
+        <div class="main__progress m">jdsk.</div>
+        <div class="control control_main ">
+            <div class="control__item">
+                <input type="text" class="control__input control__input_rounded">
+                <label class="control__label">Value</label>
+            </div>
+            <div class="control__item">
+                <label class="switch control__input" for="checkbox1">
+                    <input type="checkbox" id="animate" />
+                    <div class="slider round"></div>
+                </label>
+                <label class="control__label">Animate</label>
+            </div>
+            <div class="control__item">
+                <label class="switch control__input" for="checkbox2">
+                    <input type="checkbox" id="hide" />
+                    <div class="slider round"></div>
+                </label>
+                <label class="control__label">Hide</label>
+            </div>
         </div>
     </section>
     <script src="src/progress/progress.js"></script>
