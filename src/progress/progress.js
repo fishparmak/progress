@@ -47,6 +47,7 @@
                         this.state = state;
                       }
                       else {
+                        this.state = 'normal';
                         progressBlock.style.display = 'inline-block'; // отображаем диаграмму
                       }
                       break;
