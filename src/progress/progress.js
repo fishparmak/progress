@@ -10,6 +10,7 @@
            this.value;
            this.parentNode = parentNode;
            var progressRunner;
+           var progressBlock;
 
            this.drawChart = function (rad=9) {
                var circumference = 2*Math.PI*rad;
@@ -20,45 +21,42 @@
                var child = this.parentNode[0].childNodes[0];
                 if(child.className.baseVal=='progress'){
                     progressRunner = child.childNodes[1];
+                    progressBlock = child;
                 }
                 animate();
                return this;
            }
            this.setMod = function (state, prm) {
                state = state.toLowerCase();
-               console.log(prm);
-               prm = prm.toLocaleLowerCase();
-               this.prm = prm;
-               console.log(prm);
+               this.prm = prm.toLocaleLowerCase();
               switch(state){
                   case 'animated':
-                      progressRunner.style.display = 'block';
+                      progressBlock.style.display = 'inline-block';
                       if(this.prm=='yes'){
                           this.state = state;
                           this.drawChart();
                         }
                         else {
-                            progressRunner.style.display = 'block';
+                            progressBlock.style.display = 'inline-block';
                             this.state='normal'
                         }
                         break;
                   case 'hidden':
                       if(this.prm=='yes') {
-                        console.log('hide');
-                        progressRunner.style.display = 'none';
+                        progressBlock.style.display = 'none';
                         this.state = state;
                       }
                       else {
-                        progressRunner.style.display = 'block';
+                        progressBlock.style.display = 'inline-block';
                       }
                       break;
-                  default: console.log('Error');
+                  default: throw('Error');
               }
                return this;
            }
            this.setValue = function (value) {
                if(this.state != 'normal') {
-                   console.log('Value can be changed only in the Normal state.')
+                   throw('Value can be changed only in the Normal state.')
                    return this;
                }
                if(value>=0 && value<=100) {

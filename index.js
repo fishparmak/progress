@@ -1,29 +1,21 @@
 p = Progress(value=10);
 p.parentNode = document.getElementsByClassName('main__progress');
 p.setValue(50);
-p.setMod('animated', '');
 
 var valueInput = document.getElementById("valueInput");
 var hidden = document.getElementById("hidden");
 var animated = document.getElementById("animated");
-var cont = document.getElementsByClassName("control")[0];
+var control = document.getElementsByClassName("control")[0];
+animated.checked = true;
 
-// Object.defineProperty(animated, 'number', {
-//     get() {
-//       return b;
-//     },
-//     set(arg) {
-//       b = arg + 2;
-//     }
-//   })
-
-cont.addEventListener('change', function(e) {
+control.addEventListener('change', function(e) {
     const { target } = e;
       if (!target.id) {
         e.stopPropagation();
     } else {
         if(target.id == 'animated') {
             if(target.checked==true) {
+                hidden.checked = false;
                 p.setMod('animated', 'yes');
             }
             else {
@@ -32,6 +24,7 @@ cont.addEventListener('change', function(e) {
         }
         else if(target.id == 'hidden') {
             if(target.checked==true) {
+                animated.checked = false;
                 p.setMod('hidden', 'yes');
             }
             else {
@@ -39,7 +32,9 @@ cont.addEventListener('change', function(e) {
             }
         }
         else if(target.id == 'valueInput') {
+            animated.checked = false;
             p.setValue(target.value);
+
         }
         else {
             console.log('EventListener Error');
