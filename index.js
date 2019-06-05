@@ -1,7 +1,7 @@
 p = Progress(value=10);
 p.parentNode = document.getElementsByClassName('main__progress');
 p.setValue(50);
-p.setMod('animated', 'yes');
+p.setMod('animated', '');
 
 var valueInput = document.getElementById("valueInput");
 var hidden = document.getElementById("hidden");
@@ -17,16 +17,22 @@ var cont = document.getElementsByClassName("control")[0];
 //     }
 //   })
 
-cont.addEventListener('click', function(e) {
+cont.addEventListener('change', function(e) {
     const { target } = e;
       if (!target.id) {
         e.stopPropagation();
     } else {
         if(target.id == 'animated') {
-            console.log(target.checked);
+            if(target.checked=='true') {
+                p.setMod('animated', 'yes');
+            }
+            else {
+                p.setMod('animated', '');
+            }
+            // console.log(target.checked);
         }
         else if(target.id == 'valueInput') {
-            p.setValue(target.id);
+            p.setValue(target.value);
         }
         else {
             console.log('EventListener Error');
